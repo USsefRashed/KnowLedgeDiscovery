@@ -26,7 +26,3 @@ print(dataset.describe())
 
 # to see duplicated data I added it manually in branch with name Dublicated-Dealing
 
-import matplotlib.pyplot as plt
-plt.plot([1, 2, 3, 4])
-plt.ylabel('some numbers')
-plt.show()

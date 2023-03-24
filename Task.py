@@ -2,27 +2,17 @@ import pandas as pd
 
 #This is the first task of knowledge discovery subject
 
-# In this task I work on data for students grades in
-# maths exam to perform the data preprocessing and display the noisy ...etc 
+# in this branch I will remove some object's properties
+# To deal with missing values
+ 
 
 
 #Reading dataset File 
 dataset=pd.read_csv("./student-mat.csv")
+missing=pd.DataFrame({'Missed Count':dataset.isnull().sum()})
+# To drop them (Ignoring rows which contains null values)
+dataset.dropna()
+# To Fill them (Fill rows which contains null values with the median values)
+dataset.fillna(dataset['age'].median())
 
-#Get first 5 objects of the dataset
-print(dataset.head())
-
-#Get the count of the rows and attributes
-print(dataset.shape)
-
-#Get the data types of columns
-print(dataset.dtypes)
-
-# Get the information data set
-print(dataset.info())
-
-# Get the information data set
-print(dataset.describe())
-
-# to see duplicated data I added it manually in branch with name Dublicated-Dealing
-
+print(missing)

@@ -1,28 +1,32 @@
 import pandas as pd
 
-#This is the first task of knowledge discovery subject
-
-# In this task I work on data for students grades in
-# maths exam to perform the data preprocessing and display the noisy ...etc 
-
-
-#Reading dataset File 
+#This I added new dublicated fields in data set 
+# lets check them using pandas
+ 
 dataset=pd.read_csv("./student-mat.csv")
 
-#Get first 5 objects of the dataset
-print(dataset.head())
+# Represents the duplicated data row which will be removed (All of them)
+unkeeped=dataset.duplicated(keep=False)
+print(unkeeped)
 
-#Get the count of the rows and attributes
-print(dataset.shape)
+# Represents the duplicated data row which will be removed (Keep the first Remove others)
+keepFirst=dataset.duplicated(keep="first")
+print(keepFirst)
 
-#Get the data types of columns
-print(dataset.dtypes)
+# Represents the duplicated data row which will be removed (Keep the Last Remove others)
+keepLast=dataset.duplicated(keep="last")
+print(keepLast)
 
-# Get the information data set
-print(dataset.info())
+#check duplicated in specific column
+dupGrades=dataset.duplicated(subset=['age'])
 
-# Get the information data set
-print(dataset.describe())
+# To drop them 
+dataset.drop_duplicates()
+# To drop Dublicated Data in a specific columns
+dataset.drop_duplicates(subset=['col A','col B'])
+# To drop Dublicated Data in a specific columns 
+# and determine which duplicated row to keep
+dataset.drop_duplicates(subset=['col A','col B'],keep="last")
 
-# to see duplicated data I added it manually in branch with name Dublicated-Dealing
+
 
